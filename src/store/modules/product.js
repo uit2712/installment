@@ -1,5 +1,4 @@
 import { GET_PRODUCT_INFO_BASIC, GET_PRODUCT_PROMOTION, GET_PRODUCT_COLOR } from '../module-types/product-types'
-// import { productData } from './../../models/product'
 export const product = {
     state() {
         return {
