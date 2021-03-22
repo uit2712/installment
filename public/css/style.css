@@ -1,0 +1,224 @@
+.wrapper {
+    width: 850px;
+    margin: 20px auto;
+    font-size: 14px;
+    background-color: #fff;
+}
+.box-sp {
+    display: flex;
+  }
+  
+.search {
+    flex: 0.7;
+    margin-top: 12px;
+    position: relative;
+    height: 37px;
+    margin-right: 10px;
+  }
+  .search input[type="search"] {
+    float: right;
+    display: block;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 68%;
+    text-indent: 10px;
+    outline: none;
+  }
+  .search button {
+    position: absolute;
+    top: 1px;
+    right: 6px;
+    width: 36px;
+    height: 33px;
+    border: 0;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+  }
+  
+.infoproduct {
+    flex: 1;
+    display: flex;
+    padding: 10px;
+  }
+  .infoproduct div a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+  .leftside-img {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+  .leftside-img div {
+    text-align: left;
+    line-height: 24px;
+  }
+  .leftside-img div.km {
+    color: #4a90e2;
+    cursor: pointer;
+    position: relative;
+  }
+  .leftside-img div.km::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 6px solid #4a90e2;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    margin-top: 10px;
+    display: inline-block;
+    margin-left: 5px;
+    position: absolute;
+    top: 0;
+  }
+  .cod {
+    color: #4a90e2;
+    cursor: pointer;
+  }
+  .note-coupon {
+    text-decoration: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    display: block;
+    clear: both;
+    font-size: 12px;
+    white-space: normal;
+    line-height: 1.5;
+    color: #666;
+  }
+  .price {
+    line-height: 24px;
+  }
+  .priceSale {
+    color: #d0021b;
+    font-size: 15px;
+    margin-left: 40px;
+  }
+  .price-Product {
+    font-size: 13px;
+    color: #666;
+    text-decoration: line-through;
+    padding-left: 10px;
+  }
+  .discount {
+    overflow: hidden;
+    font-size: 14px;
+    color: #bf081f;
+    font-style: normal;
+    padding-left: 10px;
+  }
+  .sp {
+    float: left;
+    width: 70px;
+    height: 70px;
+  }
+  .descriptionPromotion {
+    color: #288ad6;
+    margin-left: 5px;
+    font-size: 13px;
+  }
+  .tabslink {
+    display: flex;
+    clear: both;
+    overflow: hidden;
+    background: #fff;
+    color: #4a90e3;
+  }
+  .tabslink div {
+    display: block;
+    overflow: hidden;
+    width: 50%;
+    margin: auto;
+    border-left: 1px solid #4a90e2;
+    border-top: 3px solid #fff;
+    padding: 10px 0;
+    cursor: pointer;
+  }
+  .tabslink span {
+    display: block;
+    font-size: 13px;
+    text-align: center;
+    text-transform: none;
+    margin-top: 3px;
+  }
+  .tabslink p {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  .tabslink div:nth-child(1) {
+    border-left: 0;
+  }
+  .tabslink div.active {
+    color: #333;
+    border-top: 3px solid #4a90e2;
+    font-weight: 600;
+    background: #fff;
+  }
+  .tabslink div.active span {
+    font-weight: 300;
+  }
+  .prdetail {
+    overflow: hidden;
+    padding: 10px;
+    color: #4a90e2;
+    float: right;
+    text-decoration: none;
+  }
+  .step {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    padding: 20px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .listbank {
+    display: block;
+    overflow: visible;
+    padding: 10px 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .listbank div {
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 0 10px 10px 0;
+    width: 15%;
+    height: 45px;
+    min-height: 45px;
+    cursor: pointer;
+  }
+  .listbank div img {
+    width: 100%;
+    height: 100%;
+  }
+  .activeCard {
+    border: 1px solid #f5a623 !important;
+    box-shadow: 0 1px 2px 1px rgb(0 0 0 / 15%);
+  }
+  .space {
+    height: 5px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #4a90e2;
+    width: 100%;
+  }
+  .datatable {
+    display: block;
+    overflow: visible;
+    background: #fff;
+    position: relative;
+  }
+  .boxbank {
+    display: block;
+    overflow: visible;
+    background: #fff;
+    width: 100%;
+    margin: auto;
+    padding: 10px 0;
+  }
