@@ -6,6 +6,8 @@
         v-for="(item, index) in GET_LIST_CREDIT"
         :key="index"
         :credit-props="item"
+        :isBankSelected="isBankSelected"
+        @credit-selected="creditSelected"
       />
     </div>
   </div>
@@ -15,11 +17,22 @@ import CreditItem from "./CreditItem";
 import { GET_LIST_CREDIT } from "./../../../store/module-types/payment-types";
 import { mapGetters } from "vuex";
 export default {
+  props: {
+    isBankSelected: {
+      type: Boolean,
+      require: true,
+    },
+  },
   components: {
     CreditItem,
   },
   computed: {
     ...mapGetters([GET_LIST_CREDIT]),
+  },
+  methods: {
+    creditSelected: function () {
+      this.$emit("creditSelected");
+    },
   },
 };
 </script>

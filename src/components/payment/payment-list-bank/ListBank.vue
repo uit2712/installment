@@ -7,6 +7,7 @@
         v-for="(item, index) in GET_LIST_BANK"
         :key="index"
         :bank-props="item"
+        @bank-selected="bankSelected"
       />
     </div>
   </div>
@@ -21,6 +22,11 @@ export default {
   },
   computed: {
     ...mapGetters([GET_LIST_BANK]),
+  },
+  methods: {
+    bankSelected: function () {
+      this.$emit("bankSelected");
+    },
   },
 };
 </script>

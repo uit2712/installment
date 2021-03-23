@@ -1,3 +1,5 @@
 export const GET_LIST_BANK = 'GET_LIST_BANK'
 export const GET_LIST_CREDIT = 'GET_LIST_CREDIT'
+export const GET_PAYMENT_DETAILS = 'GET_PAYMENT_DETAILS'
 export const PICK_UP_BANK = 'PICK_UP_BANK'
+export const PICK_UP_CREDIT = 'PICK_UP_CREDIT'

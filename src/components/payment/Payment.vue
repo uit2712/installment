@@ -14,17 +14,27 @@
   <div class="datatable">
     <div class="space"></div>
     <div class="boxbank">
-      <list-bank />
-      <list-credit/>
+      <list-bank @bank-selected="bankSelected" />
+      <list-credit
+        :isBankSelected="isBankSelected"
+        @credit-selected="creditSelected"
+      />
+      <payment-details
+        :isCreditSelected="isCreditSelected"
+        :isInstallmentPurchasePriceSelected="isInstallmentPurchasePriceSelected"
+      />
     </div>
   </div>
 </template> 
 <script>
 import ListBank from "./payment-list-bank/ListBank";
-import ListCredit from "./payment-credit/ListCredit"
+import ListCredit from "./payment-credit/ListCredit";
+import PaymentDetails from "./payment-details/PaymentDetails";
 export default {
   components: {
-    ListBank,ListCredit
+    ListBank,
+    ListCredit,
+    PaymentDetails,
   },
   data() {
     return {
@@ -42,6 +52,9 @@ export default {
           isActive: true,
         },
       ],
+      isBankSelected: false,
+      isCreditSelected: false,
+      isInstallmentPurchasePriceSelected: false,
     };
   },
   methods: {
@@ -52,6 +65,13 @@ export default {
         });
         item.isActive = true;
       }
+    },
+    bankSelected: function () {
+      this.isBankSelected = true;
+      this.isCreditSelected = false;
+    },
+    creditSelected: function () {
+      this.isCreditSelected = true;
     },
   },
 };

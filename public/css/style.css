@@ -222,3 +222,147 @@
     margin: auto;
     padding: 10px 0;
   }
+  .infocard {
+    display: block;
+    overflow: hidden;
+    background: #fff9e8;
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-radius: 4px;
+    margin: 15px auto;
+    max-width: 805px;
+  }
+  .infocard div {
+    display: block;
+    overflow: hidden;
+    border-top: 1px solid #ddd;
+    text-align: left;
+  }
+  .infocard .barcard {
+    display: block;
+    overflow: hidden;
+    background: #ffee5d;
+    padding: 10px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .alepay-firstcol {
+    width: 30%;
+    float: left;
+    border-right: 1px solid #ddd;
+  }
+  .alepay-firstcol aside:first-child {
+    border-right: none !important;
+  }
+  .infocard div aside {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36%;
+    padding: 10px 0 10px 2%;
+    min-height: 39px;
+  }
+  .infocard div aside:first-child {
+    width: 58%;
+    border-right: 1px solid #ddd;
+  }
+  .alepay-firstcol aside:first-child {
+    border-right: none !important;
+  }
+  .infocard div aside {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36%;
+    padding: 10px 0 10px 2%;
+    min-height: 39px;
+  }
+  .alepay-item aside,
+  .alepay-firstcol aside {
+    display: block !important;
+    clear: both;
+    width: 100% !important;
+    border-bottom: 1px solid #ddd !important;
+    border-right: none !important;
+    padding: 10px !important;
+    box-sizing: border-box;
+  }
+  .alepay-firstcol aside:last-child,
+  .alepay-item aside:last-child {
+    border-bottom: none !important;
+    height: 57px;
+  }
+  .alepay-item {
+    width: 33.155%;
+    float: left;
+    border-right: 1px solid #ddd;
+    border-top: none !important;
+  }
+  .infocard div label {
+    color: #d0021b;
+  }
+  .cart-btt.small {
+    width: 70%;
+    padding: 5px 10px 0 10px;
+    height: 35px;
+    font-size: 14px;
+    text-transform: uppercase !important;
+    display: block;
+    cursor: pointer;
+    border: none;
+    font-weight: normal;
+    margin-left: 15%;
+  }
+  .listbank a {
+    float: left;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    margin: 0 10px 10px 0;
+    width: 15%;
+    padding: 5px 0;
+    text-align: center;
+    min-height: 36px;
+  }
+  .cart-btt {
+    background-image: linear-gradient(-180deg, #f89406 0%, #f76b1c 100%);
+    border: 1px solid #d97f00;
+    text-transform: uppercase;
+    background-image: linear-gradient(-180deg, #f89406 0%, #f76b1c 100%);
+    border: 1px solid #d97f00;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    display: block;
+    clear: both;
+    height: 45px;
+    box-sizing: border-box;
+    line-height: 25px;
+    font-weight: bold;
+    padding: 10px 14px;
+  }
+  .alepay-firstcol aside:last-child,
+  .alepay-item aside:last-child {
+    border-bottom: none !important;
+    height: 57px;
+  }
+  .rechoose-month {
+    float: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    width: auto !important;
+    color: #288ad6;
+    font-weight: normal;
+}
+.listbank a {
+  float: left;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  margin: 0 10px 10px 0;
+  width: 15%;
+  padding: 5px 0;
+  text-align: center;
+  min-height: 36px;
+}

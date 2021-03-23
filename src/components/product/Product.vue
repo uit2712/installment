@@ -11,10 +11,10 @@
       <div class="price">
         Giá sản phẩm
         <strong class="priceSale">{{
-          formatPrice(GET_PRODUCT_INFO_BASIC.priceSale) + "₫"
+          $filters.formatPrice(GET_PRODUCT_INFO_BASIC.priceSale)
         }}</strong>
         <span class="price-Product">{{
-          formatPrice(GET_PRODUCT_INFO_BASIC.price) + "₫"
+          $filters.formatPrice(GET_PRODUCT_INFO_BASIC.price)
         }}</span>
         <span class="discount">{{
           GET_PRODUCT_INFO_BASIC.discount + "%"
@@ -53,9 +53,6 @@ export default {
     ...mapGetters([GET_PRODUCT_INFO_BASIC]),
   },
   methods: {
-    formatPrice: function (price) {
-      return new Intl.NumberFormat("en-DE").format(price);
-    },
     togglePromotionDetails: function () {
       this.isTogglePromotionDetails = !this.isTogglePromotionDetails;
     },

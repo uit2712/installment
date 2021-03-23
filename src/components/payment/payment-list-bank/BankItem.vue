@@ -1,16 +1,16 @@
 <template>
-  <div class="bank-item">
-    <img
-      v-if="!bank.isHidden"
-      :src="bank.imageUrl"
-      :title="bank.name"
-      :class="{ activeCard: bank.isActive }"
-      @click="pickBank"
-    />
+  <div
+    class="bank-item"
+    v-if="!bank.isHidden"
+    :class="{ activeCard: bank.isActive }"
+    @click="pickBank"
+  >
+    <img :src="bank.imageUrl" :title="bank.name" />
   </div>
 </template>
 <script>
 import { bankData } from "./../../../models/bank";
+import { PICK_UP_BANK } from "./../../../store/module-types/payment-types";
 export default {
   props: {
     bankProps: {
@@ -28,8 +28,9 @@ export default {
   },
   methods: {
     pickBank: function () {
+      this.$emit("bankSelected");
       this.$store.commit({
-        type: "PICK_UP_BANK",
+        type: PICK_UP_BANK,
         bank: this.bank,
       });
     },

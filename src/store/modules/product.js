@@ -52,6 +52,5 @@ export const product = {
         }
     },
     mutations: {
-
     }
 }

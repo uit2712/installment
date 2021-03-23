@@ -1,4 +1,4 @@
-import { GET_LIST_BANK, GET_LIST_CREDIT, PICK_UP_BANK } from "./../module-types/payment-types"
+import * as paymentTypes from "./../module-types/payment-types"
 export const payment = {
     state() {
         return {
@@ -12,7 +12,38 @@ export const payment = {
                     credits: [
                         {
                             creditId: "c131",
-                            detailPayment: [],
+                            detailPayment: [
+                                {
+                                    detailPaymentId: 'afc2',
+                                    numberOfMonth: 6,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 5665000,
+                                    totalInstallment: 34400000,
+                                    difference: 1000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                },
+                                {
+                                    detailPaymentId: 'afc3',
+                                    numberOfMonth: 9,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 3665000,
+                                    totalInstallment: 35400000,
+                                    difference: 3000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                },
+                                {
+                                    detailPaymentId: 'afc4',
+                                    numberOfMonth: 12,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 2955000,
+                                    totalInstallment: 36400000,
+                                    difference: 4000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                }
+                            ],
                             name: "Visa",
                             imageUrl: "https://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Visa-icon.png",
                             isActive: false,
@@ -20,7 +51,38 @@ export const payment = {
                         },
                         {
                             creditId: "c132",
-                            detailPayment: [],
+                            detailPayment: [
+                                {
+                                    detailPaymentId: 'afc2',
+                                    numberOfMonth: 6,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 5665000,
+                                    totalInstallment: 34400000,
+                                    difference: 1000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                },
+                                {
+                                    detailPaymentId: 'afc3',
+                                    numberOfMonth: 9,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 3665000,
+                                    totalInstallment: 35400000,
+                                    difference: 3000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                },
+                                {
+                                    detailPaymentId: 'afc4',
+                                    numberOfMonth: 12,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 2955000,
+                                    totalInstallment: 36400000,
+                                    difference: 4000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                }
+                            ],
                             name: "MasterCard",
                             imageUrl: "https://cdn.iconscout.com/icon/free/png-512/mastercard-10-226450.png",
                             isActive: false,
@@ -28,7 +90,38 @@ export const payment = {
                         },
                         {
                             creditId: "c133",
-                            detailPayment: [],
+                            detailPayment: [
+                                {
+                                    detailPaymentId: 'afc2',
+                                    numberOfMonth: 6,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 5665000,
+                                    totalInstallment: 34400000,
+                                    difference: 1000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                },
+                                {
+                                    detailPaymentId: 'afc3',
+                                    numberOfMonth: 9,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 3665000,
+                                    totalInstallment: 35400000,
+                                    difference: 3000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                },
+                                {
+                                    detailPaymentId: 'afc4',
+                                    numberOfMonth: 12,
+                                    installmentPurchasePrice: 33490000,
+                                    installmentPerMonth: 2955000,
+                                    totalInstallment: 36400000,
+                                    difference: 4000000, //chenh lech
+                                    musPay: 0,
+                                    isActive: false,
+                                }
+                            ],
                             name: "JCB",
                             imageUrl: "https://cdn3.iconfinder.com/data/icons/payment-method/480/jcb_card_payment-512.png",
                             isActive: false,
@@ -45,7 +138,36 @@ export const payment = {
                     credits: [
                         {
                             creditId: "c131",
-                            detailPayment: [],
+                            detailPayment: [{
+                                detailPaymentId: 'afc2',
+                                numberOfMonth: 6,
+                                installmentPurchasePrice: 33490000,
+                                installmentPerMonth: 5665000,
+                                totalInstallment: 34400000,
+                                difference: 1000000, //chenh lech
+                                musPay: 0,
+                                isActive: false,
+                            },
+                            {
+                                detailPaymentId: 'afc3',
+                                numberOfMonth: 9,
+                                installmentPurchasePrice: 33490000,
+                                installmentPerMonth: 3665000,
+                                totalInstallment: 35400000,
+                                difference: 3000000, //chenh lech
+                                musPay: 0,
+                                isActive: false,
+                            },
+                            {
+                                detailPaymentId: 'afc4',
+                                numberOfMonth: 12,
+                                installmentPurchasePrice: 33490000,
+                                installmentPerMonth: 2955000,
+                                totalInstallment: 36400000,
+                                difference: 4000000, //chenh lech
+                                musPay: 0,
+                                isActive: false,
+                            }],
                             name: "Visa",
                             imageUrl: "https://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Visa-icon.png",
                             isActive: false,
@@ -265,24 +387,52 @@ export const payment = {
                     isHidden: false
                 },
             ],
+            // bankSelected: {},
+            // creditSelected: {},
+            paymentDetails: [],
+
+
         }
     },
     getters: {
-        [GET_LIST_BANK]: function (state) {
+        [paymentTypes.GET_LIST_BANK]: function (state) {
             return state.banks
         },
-        [GET_LIST_CREDIT]: function (state) {
+        [paymentTypes.GET_LIST_CREDIT]: function (state) {
             return state.credits
+        },
+        [paymentTypes.GET_PAYMENT_DETAILS]: function (state) {
+            return state.paymentDetails
         }
     },
     mutations: {
-        [PICK_UP_BANK]: function (state, payload) {
-            if (payload.bank.isActive == false) {
-                state.banks.forEach(el => {
-                    el.isActive = false
+        [paymentTypes.PICK_UP_BANK]: function (state, payload) {
+            if (payload.bank.isActive == true) return;
+            state.banks.forEach(el => {
+                //Set credit item in each bank isActive to false
+                el.credits.forEach(item => {
+                    item.isActive = false
                 });
-            }
-            payload.bank.isActive = true;
+                if (el.bankId == payload.bank.bankId) {
+                    el.isActive = true;
+                    state.credits = [...el.credits]
+                }
+                else {
+                    el.isActive = false
+                }
+            });
+        },
+        [paymentTypes.PICK_UP_CREDIT]: function (state, payload) {
+            if (payload.credit.isActive == true) return;
+            state.credits.forEach(el => {
+                if (el.creditId == payload.credit.creditId) {
+                    el.isActive = true;
+                    state.paymentDetails = el.detailPayment;
+                }
+                else {
+                    el.isActive = false
+                }
+            })
         }
     },
 
