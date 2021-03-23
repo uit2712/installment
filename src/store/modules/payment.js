@@ -387,11 +387,31 @@ export const payment = {
                     isHidden: false
                 },
             ],
-            // bankSelected: {},
-            // creditSelected: {},
             paymentDetails: [],
-
-
+            resultPayment: {
+                bankId: '',
+                name: '',
+                imageUrl: '',
+                credit: {
+                    creditId: '',
+                    name: '',
+                    imageUrl: '',
+                    detailPayment: {
+                        detailPaymentId: '',
+                        numberOfMonth: 0,
+                        installmentPurchasePrice: 0,
+                        installmentPerMonth: 0,
+                        totalInstallment: 0,
+                        difference: 0, //chenh lech
+                        mustPay: 0,
+                        isActive: false,
+                    },
+                    isActive: false,
+                    isHidden: false
+                },
+                isActive: false,
+                isHidden: false,
+            },
         }
     },
     getters: {
@@ -403,6 +423,9 @@ export const payment = {
         },
         [paymentTypes.GET_PAYMENT_DETAILS]: function (state) {
             return state.paymentDetails
+        },
+        [paymentTypes.GET_NAME_BANK_AND_NAME_CREDIT]: function (state) {
+            return state.resultPayment
         }
     },
     mutations: {
@@ -415,7 +438,13 @@ export const payment = {
                 });
                 if (el.bankId == payload.bank.bankId) {
                     el.isActive = true;
-                    state.credits = [...el.credits]
+                    state.credits = [...el.credits];
+
+                    state.resultPayment.bankId = el.bankId;
+                    state.resultPayment.imageUrl = el.imageUrl;
+                    state.resultPayment.isActive = el.isActive;
+                    state.resultPayment.isHidden = el.isHidden;
+                    state.resultPayment.name = el.name;
                 }
                 else {
                     el.isActive = false
@@ -428,9 +457,26 @@ export const payment = {
                 if (el.creditId == payload.credit.creditId) {
                     el.isActive = true;
                     state.paymentDetails = el.detailPayment;
+
+                    state.resultPayment.credit.creditId = el.creditId;
+                    state.resultPayment.credit.imageUrl = el.imageUrl;
+                    state.resultPayment.credit.isActive = el.imageUrl;
+                    state.resultPayment.credit.isHidden = el.isHidden;
+                    state.resultPayment.credit.name = el.name;
                 }
                 else {
                     el.isActive = false
+                }
+            })
+        },
+        [paymentTypes.PICK_UP_PAYMENT_DETAILS]: function (state, payload) {
+            state.paymentDetails.forEach(el => {
+                if (el.detailPaymentId == payload.paymentDetails.detailPaymentId) {
+                    el.isActive = true;
+                    state.resultPayment.credit.detailPayment = el;
+                }
+                else {
+                    el.isActive = false;
                 }
             })
         }

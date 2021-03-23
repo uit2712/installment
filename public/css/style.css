@@ -366,3 +366,25 @@
   text-align: center;
   min-height: 36px;
 }
+.onecol {
+  width: 100% !important;
+}
+.none {
+  display: none !important;
+}
+.cart-btt.small.choosed {
+  background: #fff;
+  border: 1px solid #d97f00;
+  color: #d97f00;
+}
+.rechoose-month {
+  float: none !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  width: auto !important;
+  color: #288ad6;
+  font-weight: normal;
+  text-decoration: none;
+}

@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     pickBank: function () {
-      this.$emit("bankSelected");
+      this.$emit("bankSelected", this.bank);
       this.$store.commit({
         type: PICK_UP_BANK,
         bank: this.bank,

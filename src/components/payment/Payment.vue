@@ -14,14 +14,16 @@
   <div class="datatable">
     <div class="space"></div>
     <div class="boxbank">
-      <list-bank @bank-selected="bankSelected" />
+      <list-bank @bank-selected="bankSelected($event)" />
       <list-credit
         :isBankSelected="isBankSelected"
         @credit-selected="creditSelected"
       />
       <payment-details
         :isCreditSelected="isCreditSelected"
+        :isPaymentDetailsSelected="isPaymentDetailsSelected"
         :isInstallmentPurchasePriceSelected="isInstallmentPurchasePriceSelected"
+        @payment-details-selected="paymentDetailsSelected"
       />
     </div>
   </div>
@@ -30,6 +32,7 @@
 import ListBank from "./payment-list-bank/ListBank";
 import ListCredit from "./payment-credit/ListCredit";
 import PaymentDetails from "./payment-details/PaymentDetails";
+import { bankData } from "../../models/bank";
 export default {
   components: {
     ListBank,
@@ -52,9 +55,11 @@ export default {
           isActive: true,
         },
       ],
+      bankSelectedData: bankData,
       isBankSelected: false,
       isCreditSelected: false,
       isInstallmentPurchasePriceSelected: false,
+      isPaymentDetailsSelected: false,
     };
   },
   methods: {
@@ -66,12 +71,21 @@ export default {
         item.isActive = true;
       }
     },
-    bankSelected: function () {
+    bankSelected: function (event) {
+      if (this.bankSelectedData.bankId == event.bankId) {
+        return;
+      }
       this.isBankSelected = true;
       this.isCreditSelected = false;
+      this.isPaymentDetailsSelected = false;
+      this.bankSelectedData = event;
     },
     creditSelected: function () {
       this.isCreditSelected = true;
+      this.isPaymentDetailsSelected = false;
+    },
+    paymentDetailsSelected: function () {
+      this.isPaymentDetailsSelected = !this.isPaymentDetailsSelected;
     },
   },
 };
