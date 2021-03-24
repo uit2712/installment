@@ -25,6 +25,8 @@
         :isInstallmentPurchasePriceSelected="isInstallmentPurchasePriceSelected"
         @payment-details-selected="paymentDetailsSelected"
       />
+      <prepaid-color-product />
+      <info-customer />
     </div>
   </div>
 </template> 
@@ -32,12 +34,16 @@
 import ListBank from "./payment-list-bank/ListBank";
 import ListCredit from "./payment-credit/ListCredit";
 import PaymentDetails from "./payment-details/PaymentDetails";
+import PrepaidColorProduct from "./prepaid-color-product/PrepaidColorProduct";
+import InfoCustomer from "./info-customer/InfoCustomer";
 import { bankData } from "../../models/bank";
 export default {
   components: {
     ListBank,
     ListCredit,
     PaymentDetails,
+    PrepaidColorProduct,
+    InfoCustomer,
   },
   data() {
     return {

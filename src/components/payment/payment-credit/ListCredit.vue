@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="step" id="step2">Bước 2: Chọn loại thẻ</div>
-    <div class="listbank" style="padding-bottom: 100px">
+    <div class="listbank" style="padding-bottom: 80px">
       <credit-item
         v-for="(item, index) in GET_LIST_CREDIT"
         :key="index"
