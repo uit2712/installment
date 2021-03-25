@@ -15,14 +15,6 @@
     </div>
     <receive-ship />
     <receive-directory />
-    <span id="alepay-err" style="display: none"></span>
-    <a
-      class="cart-btt full-width"
-      id="btncomplete"
-      href="javascript:void(0)"
-      style="display: block"
-      >Thanh toán ngay</a
-    >
   </div>
 </template>
 <script>

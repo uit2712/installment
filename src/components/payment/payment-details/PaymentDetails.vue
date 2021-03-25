@@ -13,7 +13,7 @@
           <aside>Góp mỗi tháng</aside>
           <aside>Tổng tiền trả góp</aside>
           <aside>Chênh lệch với mua trả thẳng</aside>
-          <aside v-if="isInstallmentPurchasePriceSelected">
+          <aside v-if="isPrepaidPriceSelected">
             Số tiền thanh toán khi nhận máy
           </aside>
           <aside id="divbutton"></aside>
@@ -23,9 +23,7 @@
             v-for="(item, index) in GET_PAYMENT_DETAILS"
             :key="index"
             :payment-detail-props="item"
-            :isInstallmentPurchasePriceSelected="
-              isInstallmentPurchasePriceSelected
-            "
+            :isPrepaidPriceSelected="isPrepaidPriceSelected"
             :isPaymentDetailsSelected="isPaymentDetailsSelected"
             @payment-details-selected="paymentDetailsSelected"
           />
@@ -37,17 +35,14 @@
 <script>
 import PaymentDetailItem from "./PaymentDetailItem";
 import { mapGetters } from "vuex";
-import {
-  GET_NAME_BANK_AND_NAME_CREDIT,
-  GET_PAYMENT_DETAILS,
-} from "./../../../store/module-types/payment-types";
+import * as paymentTypes from "./../../../store/module-types/payment-types";
 export default {
   props: {
     isCreditSelected: {
       type: Boolean,
       require: true,
     },
-    isInstallmentPurchasePriceSelected: {
+    isPrepaidPriceSelected: {
       type: Boolean,
       require: true,
     },
@@ -60,7 +55,10 @@ export default {
     PaymentDetailItem,
   },
   computed: {
-    ...mapGetters([GET_PAYMENT_DETAILS, GET_NAME_BANK_AND_NAME_CREDIT]),
+    ...mapGetters(paymentTypes.PAYMENT_MODULE_NAME, [
+      paymentTypes.GET_PAYMENT_DETAILS,
+      paymentTypes.GET_NAME_BANK_AND_NAME_CREDIT,
+    ]),
   },
   methods: {
     paymentDetailsSelected: function () {

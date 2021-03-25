@@ -14,7 +14,7 @@
 </template>
 <script>
 import CreditItem from "./CreditItem";
-import { GET_LIST_CREDIT } from "./../../../store/module-types/payment-types";
+import * as paymentTypes from "./../../../store/module-types/payment-types";
 import { mapGetters } from "vuex";
 export default {
   props: {
@@ -27,7 +27,9 @@ export default {
     CreditItem,
   },
   computed: {
-    ...mapGetters([GET_LIST_CREDIT]),
+    ...mapGetters(paymentTypes.PAYMENT_MODULE_NAME, [
+      paymentTypes.GET_LIST_CREDIT,
+    ]),
   },
   methods: {
     creditSelected: function () {

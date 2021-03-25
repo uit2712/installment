@@ -10,13 +10,15 @@
 <script>
 import { mapGetters } from "vuex";
 import DetailPromotionItem from "./DetailPromotionItem";
-import { GET_PRODUCT_PROMOTION } from "./../../../store/module-types/product-types";
+import * as productTypes from "./../../../store/module-types/product-types";
 export default {
   components: {
     DetailPromotionItem,
   },
   computed: {
-    ...mapGetters([GET_PRODUCT_PROMOTION]),
+    ...mapGetters(productTypes.PRODUCT_MODULE_NAME, [
+      productTypes.GET_PRODUCT_PROMOTION,
+    ]),
   },
 };
 </script>

@@ -1,5 +1,6 @@
-import { GET_PRODUCT_INFO_BASIC, GET_PRODUCT_PROMOTION, GET_PRODUCT_COLOR } from '../module-types/product-types'
+import * as productTypes from '../module-types/product-types'
 export const product = {
+    namespaced: true,
     state() {
         return {
             productInfo: {
@@ -37,20 +38,30 @@ export const product = {
                         name: "Đỏ"
                     }
                 ],
-            }
+            },
+            resultColor: {
+                colorId: '',
+                name: '',
+            },
         }
     },
     getters: {
-        [GET_PRODUCT_INFO_BASIC]: function (state) {
+        [productTypes.GET_PRODUCT_INFO_BASIC]: function (state) {
             return state.productInfo
         },
-        [GET_PRODUCT_PROMOTION]: function (state) {
+        [productTypes.GET_PRODUCT_PROMOTION]: function (state) {
             return state.productInfo.promotionDetails
         },
-        [GET_PRODUCT_COLOR]: function (state) {
+        [productTypes.GET_PRODUCT_COLOR]: function (state) {
             return state.productInfo.colorProduct
+        },
+        [productTypes.GET_PRODUCT_COLOR_RESULT]: function (state) {
+            return state.resultColor
         }
     },
     mutations: {
+        [productTypes.SET_PRODUCT_COLOR]: function (state, payload) {
+            state.resultColor = payload.color
+        }
     }
 }

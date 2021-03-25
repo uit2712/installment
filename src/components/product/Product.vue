@@ -37,7 +37,7 @@
 import DetailPromotion from "./details-promotion/DetailPromotion";
 import ProductCoupon from "./product-coupon/ProductCoupon";
 import { mapGetters } from "vuex";
-import { GET_PRODUCT_INFO_BASIC } from "./../../store/module-types/product-types";
+import * as productTypes from "./../../store/module-types/product-types";
 export default {
   components: {
     ProductCoupon,
@@ -50,7 +50,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([GET_PRODUCT_INFO_BASIC]),
+    ...mapGetters(productTypes.PRODUCT_MODULE_NAME, [
+      productTypes.GET_PRODUCT_INFO_BASIC,
+    ]),
   },
   methods: {
     togglePromotionDetails: function () {
@@ -59,6 +61,12 @@ export default {
     toggleCoupon: function () {
       this.isToggleCoupon = !this.isToggleCoupon;
     },
+  },
+  created() {
+    this.$store.commit({
+      type: `${productTypes.PRODUCT_MODULE_NAME}/${productTypes.SET_PRODUCT_COLOR}`,
+      color: this.GET_PRODUCT_INFO_BASIC.colorProduct[0],
+    });
   },
 };
 </script>

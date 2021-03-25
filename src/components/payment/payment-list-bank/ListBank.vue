@@ -14,14 +14,16 @@
 </template>
 <script>
 import BankItem from "./BankItem";
-import { GET_LIST_BANK } from "./../../../store/module-types/payment-types";
+import * as paymentTypes from "./../../../store/module-types/payment-types";
 import { mapGetters } from "vuex";
 export default {
   components: {
     BankItem,
   },
   computed: {
-    ...mapGetters([GET_LIST_BANK]),
+    ...mapGetters(paymentTypes.PAYMENT_MODULE_NAME, [
+      paymentTypes.GET_LIST_BANK,
+    ]),
   },
   methods: {
     bankSelected: function (event) {

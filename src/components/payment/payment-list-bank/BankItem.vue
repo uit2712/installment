@@ -10,7 +10,7 @@
 </template>
 <script>
 import { bankData } from "./../../../models/bank";
-import { PICK_UP_BANK } from "./../../../store/module-types/payment-types";
+import * as paymentTypes from "./../../../store/module-types/payment-types";
 export default {
   props: {
     bankProps: {
@@ -30,7 +30,7 @@ export default {
     pickBank: function () {
       this.$emit("bankSelected", this.bank);
       this.$store.commit({
-        type: PICK_UP_BANK,
+        type: `${paymentTypes.PAYMENT_MODULE_NAME}/${paymentTypes.PICK_UP_BANK}`,
         bank: this.bank,
       });
     },

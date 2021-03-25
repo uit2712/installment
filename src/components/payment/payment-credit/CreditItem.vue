@@ -10,7 +10,7 @@
 </template>
 <script>
 import { creditData } from "./../../../models/credit";
-import { PICK_UP_CREDIT } from "./../../../store/module-types/payment-types";
+import * as paymentTypes from "./../../../store/module-types/payment-types";
 export default {
   props: {
     creditProps: {
@@ -38,7 +38,7 @@ export default {
       if (this.isBankSelected == true) {
         this.$emit("creditSelected");
         this.$store.commit({
-          type: PICK_UP_CREDIT,
+          type: `${paymentTypes.PAYMENT_MODULE_NAME}/${paymentTypes.PICK_UP_CREDIT}`,
           credit: this.credit,
         });
       } else {

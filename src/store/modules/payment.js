@@ -1,5 +1,7 @@
 import * as paymentTypes from "./../module-types/payment-types"
+import { PRODUCT_MODULE_NAME } from "./../module-types/product-types"
 export const payment = {
+    namespaced: true,
     state() {
         return {
             banks: [
@@ -16,7 +18,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc2',
                                     numberOfMonth: 6,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 5665000,
                                     totalInstallment: 34400000,
                                     difference: 1000000, //chenh lech
@@ -26,7 +28,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc3',
                                     numberOfMonth: 9,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 3665000,
                                     totalInstallment: 35400000,
                                     difference: 3000000, //chenh lech
@@ -36,7 +38,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc4',
                                     numberOfMonth: 12,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 2955000,
                                     totalInstallment: 36400000,
                                     difference: 4000000, //chenh lech
@@ -55,7 +57,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc2',
                                     numberOfMonth: 6,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 5665000,
                                     totalInstallment: 34400000,
                                     difference: 1000000, //chenh lech
@@ -65,7 +67,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc3',
                                     numberOfMonth: 9,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 3665000,
                                     totalInstallment: 35400000,
                                     difference: 3000000, //chenh lech
@@ -75,7 +77,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc4',
                                     numberOfMonth: 12,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 2955000,
                                     totalInstallment: 36400000,
                                     difference: 4000000, //chenh lech
@@ -94,7 +96,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc2',
                                     numberOfMonth: 6,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 5665000,
                                     totalInstallment: 34400000,
                                     difference: 1000000, //chenh lech
@@ -104,7 +106,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc3',
                                     numberOfMonth: 9,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 3665000,
                                     totalInstallment: 35400000,
                                     difference: 3000000, //chenh lech
@@ -114,7 +116,7 @@ export const payment = {
                                 {
                                     detailPaymentId: 'afc4',
                                     numberOfMonth: 12,
-                                    installmentPurchasePrice: 33490000,
+                                    prepaidPrice: 33490000,
                                     installmentPerMonth: 2955000,
                                     totalInstallment: 36400000,
                                     difference: 4000000, //chenh lech
@@ -141,7 +143,7 @@ export const payment = {
                             detailPayment: [{
                                 detailPaymentId: 'afc2',
                                 numberOfMonth: 6,
-                                installmentPurchasePrice: 33490000,
+                                prepaidPrice: 33490000,
                                 installmentPerMonth: 5665000,
                                 totalInstallment: 34400000,
                                 difference: 1000000, //chenh lech
@@ -151,7 +153,7 @@ export const payment = {
                             {
                                 detailPaymentId: 'afc3',
                                 numberOfMonth: 9,
-                                installmentPurchasePrice: 33490000,
+                                prepaidPrice: 33490000,
                                 installmentPerMonth: 3665000,
                                 totalInstallment: 35400000,
                                 difference: 3000000, //chenh lech
@@ -161,7 +163,7 @@ export const payment = {
                             {
                                 detailPaymentId: 'afc4',
                                 numberOfMonth: 12,
-                                installmentPurchasePrice: 33490000,
+                                prepaidPrice: 33490000,
                                 installmentPerMonth: 2955000,
                                 totalInstallment: 36400000,
                                 difference: 4000000, //chenh lech
@@ -387,6 +389,24 @@ export const payment = {
                     isHidden: false
                 },
             ],
+            prepaids: [
+                {
+                    prepaidId: "pe2",
+                    prepaidPrice: 3000000,
+                },
+                {
+                    prepaidId: "pe3",
+                    prepaidPrice: 6000000,
+                },
+                {
+                    prepaidId: "pe4",
+                    prepaidPrice: 9000000,
+                },
+                {
+                    prepaidId: "pe5",
+                    prepaidPrice: 12000000,
+                },
+            ],
             paymentDetails: [],
             resultPayment: {
                 bankId: '',
@@ -399,7 +419,7 @@ export const payment = {
                     detailPayment: {
                         detailPaymentId: '',
                         numberOfMonth: 0,
-                        installmentPurchasePrice: 0,
+                        prepaidPrice: 0,
                         installmentPerMonth: 0,
                         totalInstallment: 0,
                         difference: 0, //chenh lech
@@ -415,7 +435,7 @@ export const payment = {
         }
     },
     getters: {
-        [paymentTypes.GET_LIST_BANK]: function (state) {
+        [paymentTypes.GET_LIST_BANK]: function (state, getters, rootState, rootGetters) {
             return state.banks
         },
         [paymentTypes.GET_LIST_CREDIT]: function (state) {
@@ -426,7 +446,14 @@ export const payment = {
         },
         [paymentTypes.GET_NAME_BANK_AND_NAME_CREDIT]: function (state) {
             return state.resultPayment
+        },
+        [paymentTypes.GET_LIST_PREPAID]: function (state) {
+            return state.prepaids
+        },
+        [paymentTypes.GET_SINGLE_PREPAID]: function (state) {
+            return state.resultPayment.credit.detailPayment.prepaidPrice
         }
+
     },
     mutations: {
         [paymentTypes.PICK_UP_BANK]: function (state, payload) {
@@ -473,11 +500,17 @@ export const payment = {
             state.paymentDetails.forEach(el => {
                 if (el.detailPaymentId == payload.paymentDetails.detailPaymentId) {
                     el.isActive = true;
-                    state.resultPayment.credit.detailPayment = el;
+                    state.resultPayment.credit.detailPayment = { ...el };
                 }
                 else {
                     el.isActive = false;
                 }
+            })
+        },
+        [paymentTypes.SET_PREPAID_PRODUCT]: function (state, payload) {
+            state.resultPayment.credit.detailPayment.prepaidPrice = payload.prepaid.prepaidPrice;
+            state.paymentDetails.forEach(el => {
+                el.prepaidPrice = payload.prepaid.prepaidPrice
             })
         }
     },

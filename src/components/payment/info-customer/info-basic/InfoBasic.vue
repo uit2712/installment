@@ -3,55 +3,71 @@
     <b class="step">Thông tin người mua</b>
     <div class="infouser">
       <div class="malefemale">
-        <label id="male" class="anh chonkm" onclick="SetGender(1)">
-          <input type="radio" id="male" name="gender" value="male" />
+        <label id="male" class="anh chonkm">
+          <input
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+            v-model="gender"
+            checked
+          />
           &nbsp;Anh
         </label>
-        <label id="female" class=" " onclick="SetGender(0)">
-          <input type="radio" id="female" name="gender" value="female" />
+        <label id="female" class=" ">
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+            v-model="gender"
+          />
           &nbsp;Chị
         </label>
       </div>
       <div class="areainfo">
         <div class="left">
-          <input
-            onkeyup="onKeyupInputName(this)"
-            type="text"
-            class="saveinfo"
-            name="BillingAddress.FullName"
-            id="txtname"
-            placeholder="Họ và tên"
-            maxlength="50"
-            value="hòa"
-          />
+          <v-field v-slot="{ field }" name="fullName">
+            <input
+              type="text"
+              class="saveinfo"
+              id="txtname"
+              placeholder="Họ và tên"
+              maxlength="50"
+              v-bind="field"
+            />
+          </v-field>
         </div>
         <div class="left">
-          <input
-            type="tel"
-            class="saveinfo"
-            name="BillingAddress.PhoneNumber"
-            id="txtphone"
-            placeholder="Số điện thoại"
-            maxlength="11"
-            autocomplete="off"
-            value="0954312332"
-          />
+          <v-field v-slot="{ field }" name="phoneNumber">
+            <input
+              type="tel"
+              class="saveinfo"
+              id="txtphone"
+              placeholder="Số điện thoại"
+              maxlength="11"
+              autocomplete="off"
+              value=""
+              v-bind="field"
+            />
+          </v-field>
         </div>
       </div>
-      <input
-        type="text"
-        class="saveinfo"
-        style="display: none"
-        id="OrderNote"
-        name="OrderNote"
-        placeholder="Yêu cầu khác (không bắt buộc)"
-        maxlength="300"
-      />
     </div>
   </div>
 </template>
 <script>
-export default {};
+import { Field } from "vee-validate";
+export default {
+  components: {
+    "v-field": Field,
+  },
+  data() {
+    return {
+      gender: "male",
+    };
+  },
+};
 </script>
 <style>
 </style>

@@ -5,8 +5,8 @@
   </div>
 </template>
 <script>
-import ColorProduct from "./ColorProduct";
-import PrepaidProduct from "./PrepaidProduct";
+import ColorProduct from "./color-product/ColorProduct";
+import PrepaidProduct from "./prepaid-product/PrepaidProduct";
 export default {
   components: {
     ColorProduct,

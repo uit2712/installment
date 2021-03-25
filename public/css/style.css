@@ -417,7 +417,6 @@
   white-space: nowrap;
 }
 .div-prepaid .list-prepaid {
-  display: none;
   overflow: visible;
   position: absolute;
   top: 39px;
@@ -497,7 +496,6 @@
   top: 39px;
 }
 .listcolor {
-  display: none;
   overflow: visible;
   position: absolute;
   top: 36px;
@@ -584,6 +582,7 @@
   margin: 0 0 10px 0;
   text-indent: 10px;
   width: 100%;
+  outline: none;
 }
 .areainfo .left:last-child {
   float: right;
@@ -1092,7 +1091,7 @@
   border: 1px solid #d97f00;
   border-radius: 4px;
   text-align: center;
-  margin: 40px 10px;
+  margin: 0px 10px;
   font-size: 16px;
   color: #fff;
   display: block;

@@ -23,9 +23,7 @@
       >
     </aside>
     <aside>
-      <label>{{
-        $filters.formatPrice(paymentDetails.installmentPurchasePrice)
-      }}</label>
+      <label>{{ $filters.formatPrice(paymentDetails.prepaidPrice) }}</label>
     </aside>
     <aside id="alepay-bymonth">
       <label>{{
@@ -38,11 +36,7 @@
     <aside id="alepay-diff">
       {{ $filters.formatPrice(paymentDetails.difference) }}
     </aside>
-    <aside
-      rel="mustpay"
-      id="alepay-mustpay"
-      v-if="isInstallmentPurchasePriceSelected"
-    >
+    <aside rel="mustpay" id="alepay-mustpay" v-if="isPrepaidPriceSelected">
       <label>{{ $filters.formatPrice(paymentDetails.mustPay) }}</label>
     </aside>
     <aside id="div-btn">
@@ -64,14 +58,14 @@
 </template>
 <script>
 import { paymentDetailsData } from "./../../../models/paymentDetails";
-import { PICK_UP_PAYMENT_DETAILS } from "./../../../store/module-types/payment-types";
+import * as paymentTypes from "./../../../store/module-types/payment-types";
 export default {
   props: {
     paymentDetailProps: {
       type: Object,
       require: true,
     },
-    isInstallmentPurchasePriceSelected: {
+    isPrepaidPriceSelected: {
       type: Boolean,
       require: true,
     },
@@ -95,7 +89,7 @@ export default {
     selectPay: function () {
       this.$emit("paymentDetailsSelected");
       this.$store.commit({
-        type: PICK_UP_PAYMENT_DETAILS,
+        type: `${paymentTypes.PAYMENT_MODULE_NAME}/${paymentTypes.PICK_UP_PAYMENT_DETAILS}`,
         paymentDetails: this.paymentDetails,
       });
     },

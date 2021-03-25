@@ -22,11 +22,11 @@
       <payment-details
         :isCreditSelected="isCreditSelected"
         :isPaymentDetailsSelected="isPaymentDetailsSelected"
-        :isInstallmentPurchasePriceSelected="isInstallmentPurchasePriceSelected"
+        :isPrepaidPriceSelected="isPrepaidPriceSelected"
         @payment-details-selected="paymentDetailsSelected"
       />
-      <prepaid-color-product />
-      <info-customer />
+      <prepaid-color-product v-show="isPaymentDetailsSelected" />
+      <info-customer v-show="isPaymentDetailsSelected" />
     </div>
   </div>
 </template> 
@@ -64,7 +64,7 @@ export default {
       bankSelectedData: bankData,
       isBankSelected: false,
       isCreditSelected: false,
-      isInstallmentPurchasePriceSelected: false,
+      isPrepaidPriceSelected: false,
       isPaymentDetailsSelected: false,
     };
   },
