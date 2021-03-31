@@ -2,8 +2,11 @@
   <div class="area_market" style="display: none">
     <!--#region Tỉnh thành-->
     <div class="citydis">
-      <div class="city"><span data-id="3">Hồ Chí Minh</span></div>
-      <div class="listcity layer" style="display: none">
+      <div class="city" @click="showCityList">
+        <span v-if="GET_SINGLE_CITY">{{ GET_SINGLE_CITY }}</span>
+        <span v-else>Chọn tỉnh, thành phố</span>
+      </div>
+      <div class="listcity layer" :class="[isCitySelected ? 'show' : 'none']">
         <div class="searchlocal">
           <div>
             <input
@@ -18,77 +21,25 @@
         </div>
         <div class="scroll">
           <aside>
-            <a class="n1" data-stock="1" data-value="3" data-name="Hồ Chí Minh"
-              >Hồ Chí Minh</a
-            ><a class="n1" data-stock="1" data-value="5" data-name="Hà Nội"
-              >Hà Nội</a
-            ><a class="n1" data-stock="1" data-value="9" data-name="Đà Nẵng"
-              >Đà Nẵng</a
-            ><a class="n1" data-stock="1" data-value="82" data-name="An Giang"
-              >An Giang</a
-            ><a
-              class="n1"
-              data-stock="1"
-              data-value="102"
-              data-name="Bà Rịa - Vũng Tàu"
-              >Bà Rịa - Vũng Tàu</a
-            ><a class="n1" data-stock="1" data-value="103" data-name="Bắc Giang"
-              >Bắc Giang</a
-            ><a class="n1" data-stock="1" data-value="104" data-name="Bắc Kạn"
-              >Bắc Kạn</a
-            ><a class="n1" data-stock="1" data-value="105" data-name="Bạc Liêu"
-              >Bạc Liêu</a
-            ><a class="n1" data-stock="1" data-value="106" data-name="Bắc Ninh"
-              >Bắc Ninh</a
-            ><a class="n1" data-stock="1" data-value="107" data-name="Bến Tre"
-              >Bến Tre</a
-            ><a class="n1" data-stock="1" data-value="108" data-name="Bình Định"
-              >Bình Định</a
-            ><a
-              class="n1"
-              data-stock="1"
-              data-value="148"
-              data-name="Thái Nguyên"
-              >Thái Nguyên</a
-            ><a class="n1" data-stock="1" data-value="149" data-name="Thanh Hóa"
-              >Thanh Hóa</a
-            >
-          </aside>
-          <aside>
             <a
-              class="n1"
-              data-stock="1"
-              data-value="150"
-              data-name="Thừa Thiên Huế"
-              >Thừa Thiên Huế</a
-            ><a
-              class="n1"
-              data-stock="1"
-              data-value="151"
-              data-name="Tiền Giang"
-              >Tiền Giang</a
-            ><a class="n1" data-stock="1" data-value="152" data-name="Trà Vinh"
-              >Trà Vinh</a
-            ><a
-              class="n1"
-              data-stock="1"
-              data-value="153"
-              data-name="Tuyên Quang"
-              >Tuyên Quang</a
-            ><a class="n1" data-stock="1" data-value="154" data-name="Vĩnh Long"
-              >Vĩnh Long</a
-            ><a class="n1" data-stock="1" data-value="155" data-name="Vĩnh Phúc"
-              >Vĩnh Phúc</a
-            ><a class="n0" data-stock="0" data-value="156" data-name="Yên Bái"
-              >Yên Bái</a
+              v-for="(item, index) in GET_LIST_CITY"
+              :key="index"
+              @click="pickProviceOrCity(item)"
+              >{{ item.name }}</a
             >
           </aside>
         </div>
       </div>
       <!--#endregion-->
       <!--#region Quận huyện-->
-      <div class="dist"><span data-id="0">Chọn quận, huyện</span></div>
-      <div class="listdist layer" style="display: none">
+      <div class="dist" @click="showDistrictList">
+        <span v-if="GET_SINGLE_DISTRICT">{{ GET_SINGLE_DISTRICT }}</span>
+        <span v-else>Chọn quận, huyện</span>
+      </div>
+      <div
+        class="listdist layer"
+        :class="[isDistrictSelected ? 'show' : 'none']"
+      >
         <div class="searchlocal">
           <div>
             <input
@@ -103,32 +54,12 @@
         </div>
         <div class="scroll">
           <aside>
-            <a data-value="16" data-name="Quận 1">Quận 1</a
-            ><a data-value="17" data-name="Quận 2">Quận 2</a
-            ><a data-value="18" data-name="Quận 3">Quận 3</a
-            ><a data-value="19" data-name="Quận 4">Quận 4</a
-            ><a data-value="20" data-name="Quận 5">Quận 5</a
-            ><a data-value="21" data-name="Quận 6">Quận 6</a
-            ><a data-value="22" data-name="Quận 7">Quận 7</a
-            ><a data-value="23" data-name="Quận 8">Quận 8</a
-            ><a data-value="24" data-name="Quận 9">Quận 9</a
-            ><a data-value="25" data-name="Quận 10">Quận 10</a
-            ><a data-value="26" data-name="Quận 11">Quận 11</a
-            ><a data-value="27" data-name="Quận 12">Quận 12</a>
-          </aside>
-          <aside>
-            <a data-value="30" data-name="Quận Tân Bình">Quận Tân Bình</a
-            ><a data-value="33" data-name="Quận Tân Phú">Quận Tân Phú</a
-            ><a data-value="52" data-name="Quận Phú Nhuận">Quận Phú Nhuận</a
-            ><a data-value="29" data-name="Quận Gò Vấp">Quận Gò Vấp</a
-            ><a data-value="51" data-name="Quận Bình Thạnh">Quận Bình Thạnh</a
-            ><a data-value="28" data-name="Quận Thủ Đức">Quận Thủ Đức</a
-            ><a data-value="31" data-name="Quận Bình Tân">Quận Bình Tân</a
-            ><a data-value="32" data-name="Huyện Hóc Môn">Huyện Hóc Môn</a
-            ><a data-value="34" data-name="Huyện Củ Chi">Huyện Củ Chi</a
-            ><a data-value="35" data-name="Huyện Nhà Bè">Huyện Nhà Bè</a
-            ><a data-value="36" data-name="Huyện Bình Chánh">Huyện Bình Chánh</a
-            ><a data-value="61" data-name="Huyện Cần Giờ">Huyện Cần Giờ</a>
+            <a
+              v-for="(item, index) in GET_LIST_DISTRICT"
+              :key="index"
+              @click="pickDistrict(item)"
+              >{{ item.name }}</a
+            >
           </aside>
         </div>
       </div>
@@ -206,7 +137,48 @@
   </div>
 </template>
 <script>
-export default {};
+import * as addressTypes from "./../../../../../store/module-types/address-types";
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      isCitySelected: false,
+      isDistrictSelected: false,
+    };
+  },
+  computed: {
+    ...mapGetters(addressTypes.ADDRESS_MODULE_NAME, [
+      addressTypes.GET_LIST_CITY,
+      addressTypes.GET_LIST_DISTRICT,
+      addressTypes.GET_SINGLE_CITY,
+      addressTypes.GET_SINGLE_DISTRICT,
+    ]),
+  },
+  methods: {
+    showCityList: function () {
+      this.isCitySelected = !this.isCitySelected;
+      this.isDistrictSelected = false;
+    },
+    showDistrictList: function () {
+      this.isCitySelected = false;
+      this.isDistrictSelected = !this.isDistrictSelected;
+    },
+    pickProviceOrCity: function (provinceOrCity) {
+      this.$store.commit({
+        type: `${addressTypes.ADDRESS_MODULE_NAME}/${addressTypes.PICK_UP_CITY}`,
+        provinceOrCity: provinceOrCity,
+      });
+      this.isCitySelected = !this.isCitySelected;
+    },
+    pickDistrict: function (district) {
+      this.$store.commit({
+        type: `${addressTypes.ADDRESS_MODULE_NAME}/${addressTypes.PICK_UP_DISTRICT}`,
+        district: district,
+      });
+      this.isDistrictSelected = !this.isDistrictSelected;
+    },
+  },
+};
 </script>
 <style>
 </style>

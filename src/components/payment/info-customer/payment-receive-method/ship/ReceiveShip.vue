@@ -1,11 +1,11 @@
 <template>
   <div class="area_address" style="display: block">
     <div class="citydis">
-      <!--#region Tỉnh thành-->
-      <div class="city">
-        <span>Hồ Chí Minh</span>
+      <div class="city" @click="showCityList">
+        <span v-if="GET_SINGLE_CITY">{{ GET_SINGLE_CITY }}</span>
+        <span v-else>Chọn tỉnh, thành phố</span>
       </div>
-      <div class="listcity layer" style="display: none">
+      <div class="listcity layer" :class="[isCitySelected ? 'show' : 'none']">
         <div class="searchlocal">
           <div>
             <input
@@ -13,61 +13,19 @@
               name="txtSearch"
               placeholder="Nhập tỉnh, thành để tìm nhanh"
             />
-            <!-- <button type="button" class="submit">
-              <i class="iconmobile-search"></i>
-            </button> -->
           </div>
         </div>
         <div class="scroll">
           <aside>
-            <a data-stock="1" data-value="3" data-name="Hồ Chí Minh"
-              >Hồ Chí Minh</a
-            ><a data-stock="1" data-value="5" data-name="Hà Nội">Hà Nội</a
-            ><a data-stock="1" data-value="9" data-name="Đà Nẵng">Đà Nẵng</a
-            ><a data-stock="1" data-value="82" data-name="An Giang">An Giang</a
-            ><a data-stock="1" data-value="102" data-name="Bà Rịa - Vũng Tàu"
-              >Bà Rịa - Vũng Tàu</a
-            ><a data-stock="1" data-value="103" data-name="Bắc Giang"
-              >Bắc Giang</a
-            ><a data-stock="1" data-value="104" data-name="Bắc Kạn">Bắc Kạn</a
-            ><a data-stock="1" data-value="105" data-name="Bạc Liêu">Bạc Liêu</a
-            ><a data-stock="1" data-value="106" data-name="Bắc Ninh">Bắc Ninh</a
-            ><a data-stock="1" data-value="107" data-name="Bến Tre">Bến Tre</a
-            ><a data-stock="1" data-value="108" data-name="Bình Định"
-              >Bình Định</a
-            ><a data-stock="1" data-value="109" data-name="Bình Dương"
-              >Bình Dương</a
-            ><a data-stock="1" data-value="110" data-name="Bình Phước"
-              >Bình Phước</a
-            ><a data-stock="1" data-value="111" data-name="Bình Thuận"
-              >Bình Thuận</a
-            ><a data-stock="1" data-value="81" data-name="Cà Mau">Cà Mau</a
-            ><a data-stock="1" data-value="7" data-name="Cần Thơ">Cần Thơ</a
-            ><a data-stock="1" data-value="112" data-name="Cao Bằng">Cao Bằng</a
-            ><a data-stock="1" data-value="6" data-name="Đắk Lắk">Đắk Lắk</a
-            ><a data-stock="1" data-value="113" data-name="Đắk Nông">Đắk Nông</a
-            ><a data-stock="1" data-value="114" data-name="Điện Biên"
-              >Điện Biên</a
-            ><a data-stock="1" data-value="8" data-name="Đồng Nai">Đồng Nai</a
-            ><a data-stock="1" data-value="115" data-name="Đồng Tháp"
-              >Đồng Tháp</a
-            ><a data-stock="1" data-value="116" data-name="Gia Lai">Gia Lai</a
-            ><a data-stock="1" data-value="117" data-name="Hà Giang">Hà Giang</a
-            ><a data-stock="1" data-value="118" data-name="Hà Nam">Hà Nam</a
-            ><a data-stock="1" data-value="120" data-name="Hà Tĩnh">Hà Tĩnh</a
-            ><a data-stock="1" data-value="121" data-name="Hải Dương"
-              >Hải Dương</a
-            ><a data-stock="1" data-value="101" data-name="Hải Phòng"
-              >Hải Phòng</a
-            ><a data-stock="1" data-value="122" data-name="Hậu Giang"
-              >Hậu Giang</a
-            ><a data-stock="1" data-value="123" data-name="Hòa Bình">Hòa Bình</a
-            ><a data-stock="1" data-value="124" data-name="Hưng Yên"
-              >Hưng Yên</a
+            <a
+              v-for="(item, index) in GET_LIST_CITY"
+              :key="index"
+              @click="pickProviceOrCity(item)"
+              >{{ item.name }}</a
             >
           </aside>
           <aside>
-            <a data-stock="1" data-value="125" data-name="Khánh Hòa"
+            <!-- <a data-stock="1" data-value="125" data-name="Khánh Hòa"
               >Khánh Hòa</a
             ><a data-stock="1" data-value="126" data-name="Kiên Giang"
               >Kiên Giang</a
@@ -116,13 +74,19 @@
               >Vĩnh Long</a
             ><a data-stock="1" data-value="155" data-name="Vĩnh Phúc"
               >Vĩnh Phúc</a
-            ><a data-stock="1" data-value="156" data-name="Yên Bái">Yên Bái</a>
+            ><a data-stock="1" data-value="156" data-name="Yên Bái">Yên Bái</a> -->
           </aside>
         </div>
       </div>
       <!--#region Quận huyện-->
-      <div class="dist"><span data-id="-1">Chọn quận, huyện</span></div>
-      <div class="listdist layer" style="display: none">
+      <div class="dist" @click="showDistrictList">
+        <span v-if="GET_SINGLE_DISTRICT">{{ GET_SINGLE_DISTRICT }}</span>
+        <span v-else>Chọn quận, huyện</span>
+      </div>
+      <div
+        class="listdist layer"
+        :class="[isDistrictSelected ? 'show' : 'none']"
+      >
         <div class="searchlocal">
           <div>
             <input
@@ -130,45 +94,25 @@
               type="text"
               placeholder="Nhập quận, huyện để tìm nhanh"
             />
-            <button type="submit" class="submit">
-              <i class="iconmobile-search"></i>
-            </button>
           </div>
         </div>
         <div class="scroll">
           <aside>
-            <a data-value="16" data-name="Quận 1">Quận 1</a
-            ><a data-value="17" data-name="Quận 2">Quận 2</a
-            ><a data-value="18" data-name="Quận 3">Quận 3</a
-            ><a data-value="19" data-name="Quận 4">Quận 4</a
-            ><a data-value="20" data-name="Quận 5">Quận 5</a
-            ><a data-value="21" data-name="Quận 6">Quận 6</a
-            ><a data-value="22" data-name="Quận 7">Quận 7</a
-            ><a data-value="23" data-name="Quận 8">Quận 8</a
-            ><a data-value="24" data-name="Quận 9">Quận 9</a
-            ><a data-value="25" data-name="Quận 10">Quận 10</a
-            ><a data-value="26" data-name="Quận 11">Quận 11</a
-            ><a data-value="27" data-name="Quận 12">Quận 12</a>
-          </aside>
-          <aside>
-            <a data-value="30" data-name="Quận Tân Bình">Quận Tân Bình</a
-            ><a data-value="33" data-name="Quận Tân Phú">Quận Tân Phú</a
-            ><a data-value="52" data-name="Quận Phú Nhuận">Quận Phú Nhuận</a
-            ><a data-value="29" data-name="Quận Gò Vấp">Quận Gò Vấp</a
-            ><a data-value="51" data-name="Quận Bình Thạnh">Quận Bình Thạnh</a
-            ><a data-value="28" data-name="Quận Thủ Đức">Quận Thủ Đức</a
-            ><a data-value="31" data-name="Quận Bình Tân">Quận Bình Tân</a
-            ><a data-value="32" data-name="Huyện Hóc Môn">Huyện Hóc Môn</a
-            ><a data-value="34" data-name="Huyện Củ Chi">Huyện Củ Chi</a
-            ><a data-value="35" data-name="Huyện Nhà Bè">Huyện Nhà Bè</a
-            ><a data-value="36" data-name="Huyện Bình Chánh">Huyện Bình Chánh</a
-            ><a data-value="61" data-name="Huyện Cần Giờ">Huyện Cần Giờ</a>
+            <a
+              v-for="(item, index) in GET_LIST_DISTRICT"
+              :key="index"
+              @click="pickDistrict(item)"
+              >{{ item.name }}</a
+            >
           </aside>
         </div>
       </div>
       <!--#region Phường xã-->
-      <div class="ward"><span data-id="-1">Chọn phường, xã</span></div>
-      <div class="listward layer" style="display: none">
+      <div class="ward" @click="showWardList">
+        <span v-if="GET_SINGLE_WARD">{{ GET_SINGLE_WARD }}</span>
+        <span v-else>Chọn phường, xã</span>
+      </div>
+      <div class="listward layer" :class="[isWardSelected ? 'show' : 'none']">
         <div class="searchlocal">
           <div>
             <input
@@ -176,49 +120,31 @@
               type="text"
               placeholder="Nhập phường, xã để tìm nhanh"
             />
-            <button type="submit" class="submit">
-              <i class="iconmobile-search"></i>
-            </button>
           </div>
         </div>
         <div class="scroll">
           <aside>
-            <a data-lat="10.782745" data-lng="106.704617" data-value="10109"
-              >Phường Bến Nghé</a
-            ><a data-lat="10.770046" data-lng="106.691385" data-value="10110"
-              >Phường Bến Thành</a
-            ><a data-lat="10.759624" data-lng="106.691878" data-value="10111"
-              >Phường Cầu Kho</a
-            ><a data-lat="10.765502" data-lng="106.697096" data-value="10112"
-              >Phường Cầu Ông Lãnh</a
-            ><a data-lat="10.762179" data-lng="106.691518" data-value="10113"
-              >Phường Cô Giang</a
+            <a
+              v-for="(item, index) in GET_LIST_WARD"
+              :key="index"
+              @click="pickWardOrCommunes(item)"
             >
-          </aside>
-          <aside>
-            <a data-lat="10.788858" data-lng="106.699782" data-value="10114"
-              >Phường Đa Kao</a
-            ><a data-lat="10.765733" data-lng="106.687967" data-value="10115"
-              >Phường Nguyễn Cư Trinh</a
-            ><a data-lat="10.768956" data-lng="106.700338" data-value="10116"
-              >Phường Nguyễn Thái Bình</a
-            ><a data-lat="10.767892" data-lng="106.693835" data-value="10117"
-              >Phường Phạm Ngũ Lão</a
-            ><a data-lat="10.79142" data-lng="106.688996" data-value="10118"
-              >Phường Tân Định</a
-            >
+              {{ item.name }}
+            </a>
           </aside>
         </div>
       </div>
-      <input
-        type="text"
-        placeholder="Số nhà, tên đường"
-        id="BillingAddress_Address"
-        name="BillingAddress.Address"
-        maxlength="200"
-        class="ShipAtHome homenumber saveinfo"
-        value=""
-      />
+      <v-field name="homeNumber" v-slot="{ field }" rules="required">
+        <input
+          type="text"
+          placeholder="Số nhà, tên đường"
+          id="BillingAddress_Address"
+          maxlength="200"
+          class="ShipAtHome homenumber saveinfo"
+          v-bind="field"
+          :class="{ errorInput: errors.errors.homeNumber }"
+        />
+      </v-field>
     </div>
     <div class="clr"></div>
 
@@ -260,44 +186,6 @@
         </div>
       </div>
     </div>
-    <input
-      id="BillingAddress_ProvinceId"
-      name="BillingAddress.ProvinceId"
-      type="hidden"
-      value="3"
-    />
-    <input
-      id="BillingAddress_DistictId"
-      name="BillingAddress.DistictId"
-      type="hidden"
-      value=""
-    />
-    <input
-      id="BillingAddress_WardId"
-      name="BillingAddress.WardId"
-      type="hidden"
-      value="0"
-    />
-    <input
-      id="BillingAddress_ProvinceName"
-      name="BillingAddress.ProvinceName"
-      type="hidden"
-      value="Hồ Chí Minh"
-    />
-    <input
-      id="BillingAddress_DistictName"
-      name="BillingAddress.DistictName"
-      type="hidden"
-      value=""
-    />
-    <input
-      id="BillingAddress_WardName"
-      name="BillingAddress.WardName"
-      type="hidden"
-      value=""
-    />
-    <input id="IsStockHome" name="IsStockHome" type="hidden" value="true" />
-    <input id="IsStock" name="IsStock" type="hidden" value="true" />
 
     <div class="note_address none" style="display: none">
       <p></p>
@@ -314,7 +202,75 @@
   </div>
 </template>
 <script>
-export default {};
+import * as addressTypes from "./../../../../../store/module-types/address-types";
+import { Field } from "vee-validate";
+import { mapGetters } from "vuex";
+export default {
+  props: {
+    errors: {
+      type: Object,
+      require: false,
+    },
+  },
+  data() {
+    return {
+      isCitySelected: false,
+      isDistrictSelected: false,
+      isWardSelected: false,
+    };
+  },
+  components: {
+    "v-field": Field,
+  },
+  computed: {
+    ...mapGetters(addressTypes.ADDRESS_MODULE_NAME, [
+      addressTypes.GET_LIST_CITY,
+      addressTypes.GET_LIST_DISTRICT,
+      addressTypes.GET_LIST_WARD,
+      addressTypes.GET_SINGLE_CITY,
+      addressTypes.GET_SINGLE_DISTRICT,
+      addressTypes.GET_SINGLE_WARD,
+    ]),
+  },
+  methods: {
+    showCityList: function () {
+      this.isCitySelected = !this.isCitySelected;
+      this.isDistrictSelected = false;
+      this.isWardSelected = false;
+    },
+    showDistrictList: function () {
+      this.isCitySelected = false;
+      this.isDistrictSelected = !this.isDistrictSelected;
+      this.isWardSelected = false;
+    },
+    showWardList: function () {
+      this.isCitySelected = false;
+      this.isDistrictSelected = false;
+      this.isWardSelected = !this.isWardSelected;
+    },
+    pickProviceOrCity: function (provinceOrCity) {
+      this.$store.commit({
+        type: `${addressTypes.ADDRESS_MODULE_NAME}/${addressTypes.PICK_UP_CITY}`,
+        provinceOrCity: provinceOrCity,
+      });
+      this.isCitySelected = !this.isCitySelected;
+    },
+    pickDistrict: function (district) {
+      this.$store.commit({
+        type: `${addressTypes.ADDRESS_MODULE_NAME}/${addressTypes.PICK_UP_DISTRICT}`,
+        district: district,
+      });
+      this.isDistrictSelected = !this.isDistrictSelected;
+    },
+    pickWardOrCommunes: function (wardsOrCommunes) {
+      this.$store.commit({
+        type: `${addressTypes.ADDRESS_MODULE_NAME}/${addressTypes.PICK_UP_WARD}`,
+        wardsOrCommunes: wardsOrCommunes,
+      });
+      this.isWardSelected = !this.isWardSelected;
+    },
+  },
+};
 </script>
 <style>
 </style>

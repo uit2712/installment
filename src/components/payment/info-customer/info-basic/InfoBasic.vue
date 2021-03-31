@@ -27,7 +27,7 @@
       </div>
       <div class="areainfo">
         <div class="left">
-          <v-field v-slot="{ field }" name="fullName">
+          <v-field v-slot="{ field }" name="fullName" rules="required">
             <input
               type="text"
               class="saveinfo"
@@ -35,11 +35,12 @@
               placeholder="Họ và tên"
               maxlength="50"
               v-bind="field"
+              :class="{ errorInput: errors.errors.fullName }"
             />
           </v-field>
         </div>
         <div class="left">
-          <v-field v-slot="{ field }" name="phoneNumber">
+          <v-field v-slot="{ field }" name="phoneNumber" rules="required">
             <input
               type="tel"
               class="saveinfo"
@@ -49,6 +50,7 @@
               autocomplete="off"
               value=""
               v-bind="field"
+              :class="{ errorInput: errors.errors.phoneNumber }"
             />
           </v-field>
         </div>
@@ -59,6 +61,12 @@
 <script>
 import { Field } from "vee-validate";
 export default {
+  props: {
+    errors: {
+      type: Object,
+      require: false,
+    },
+  },
   components: {
     "v-field": Field,
   },

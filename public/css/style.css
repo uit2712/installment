@@ -728,6 +728,7 @@
   height: 24px;
   border-radius: 4px;
   width: 90%;
+  outline: none;
 }
 .searchlocal .submit {
   position: absolute;
@@ -853,6 +854,7 @@
   text-indent: 10px;
   float: right;
   width: 48%;
+  outline: none;
 }
 .homenumber.OrderNoteHome {
     clear: both;
@@ -861,7 +863,6 @@
     float: none;
 }
 .area_market {
-  display: none;
   overflow: visible;
   background: #f6f6f6;
   margin: 40px -10px 0;
@@ -1111,4 +1112,10 @@
   margin: 12px 10px 10px 10px;
   border: dashed 1px #ddd;
   background-color: #fff9e8;
+}
+.errorInput {
+  border: 1px solid red !important;
+}
+.show {
+  display: block !important;
 }

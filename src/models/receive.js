@@ -1,12 +1,12 @@
 export const ship = {
     provinceOrCity: '',
-    distric: '',
+    district: '',
     wardsOrCommunes: '',
     note: ''
 }
 export const pickAtShop = {
     provinceOrCity: '',
-    distric: '',
+    district: '',
     shop: [],
     receivedTime: '',
     note: ''
