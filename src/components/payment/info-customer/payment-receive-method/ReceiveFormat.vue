@@ -25,6 +25,7 @@
     </div>
     <receive-ship :errors="errors" v-show="receiveMethod == 'ship'" />
     <receive-directory :errors="errors" v-show="receiveMethod == 'directory'" />
+    <span></span>
   </div>
 </template>
 <script>
