@@ -23,6 +23,7 @@
         &nbsp;Nhận tại siêu thị</label
       >
     </div>
+    <!-- receiptMethod nếu dùng lại nhiều lần => nên lưu 1 chỗ nào đó để dùng chung, tránh gõ đi gõ lại nhiều lần => có thể gây sai sót + nếu chỉnh thì phải chỉnh nhiều nơi -->
     <receive-ship :errors="errors" v-show="receiveMethod == 'ship'" />
     <receive-directory :errors="errors" v-show="receiveMethod == 'directory'" />
     <span></span>

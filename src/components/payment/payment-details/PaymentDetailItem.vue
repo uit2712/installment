@@ -23,7 +23,8 @@
       >
     </aside>
     <aside>
-      <label>{{ $filters.formatPrice(paymentDetails.prepaidPrice) }}</label>
+      <!-- filter không phải dùng kiểu này, coi lại nha e -->
+      <label>{{ $filters.formatPrice(paymentDetails.prepaidPrice) }}</label> 
     </aside>
     <aside id="alepay-bymonth">
       <label>{{

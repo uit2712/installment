@@ -1,4 +1,5 @@
 <template>
+<!-- e để ý nha, mỗi block chọn tỉnh, huyện, xã đều na ná nhau => tạo 1 component chung để tái sử dụng -->
   <div class="area_address" style="display: block">
     <div class="citydis">
       <div class="city" @click="showCityList">
@@ -153,6 +154,7 @@
         <b>Thời gian nhận hàng:</b>
       </div>
       <div class="citydis">
+        <!-- 1: date -->
         <div class="date">
           <span>Hôm nay 24/03</span>
         </div>
@@ -169,6 +171,7 @@
 
         <div class="hours"><span>Trước 12 giờ</span></div>
         <div class="listhours layer" style="display: none">
+          <!-- 2: hour => 1 và 2 đều có thông tin giống nhau như sau: value và text => tái sử dụng dựa vào 1 component chung -->
           <span data-value="10" class="today"><text>Trước 10 giờ</text></span>
           <span data-value="11" class="today"><text>Trước 11 giờ</text></span>
           <span data-value="12" class="ahour" selected=""

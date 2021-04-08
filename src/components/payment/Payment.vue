@@ -7,7 +7,7 @@
       :class="{ active: item.isActive }"
     >
       <img :src="item.image" alt="" />
-      {{ item.payment.toUpperCase() }}
+      {{ item.payment.toUpperCase() }} <!-- Dùng filter nha e, kiểm tra có null hay không? -->
       <span>{{ item.description }}</span>
     </div>
   </div>

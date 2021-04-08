@@ -1,8 +1,14 @@
 <template>
+<!-- trường hợp validate ở nhiều component khác nhau=>tạo ra 1 hàm validate dùng chung trong
+  global plugin, ví dụ: Vue.prototype.$validate = validate() => có gì a giải thích rõ hơn cho hiểu
+ -->
   <div class="div-info" style="display: block">
     <v-form v-slot="{ values, errors, handleSubmit }">
       <form @submit="handleSubmit($event, onSubmit)">
         <info-basic :errors="{ errors }" />
+        <!-- không nên truyền lỗi kiểu này e (errors) => giả sử component lồng nhiều component thì sao? e phải truyền props xuống hết hả?
+          lỗi là ở mỗi component tự hiển thị mà
+        -->
         <receive-format :errors="{ errors }" />
         <span id="alepay-err" style="display: block">{{ values }}</span>
         <span id="alepay-err" style="display: block">{{ errors }}</span>
